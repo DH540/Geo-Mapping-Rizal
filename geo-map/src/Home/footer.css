@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* footer.css */
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 40px 60px 20px 60px;
+    background-color: #7FAC9C;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 40px;
+}
+
+/* ---- SECTIONS ---- */
+.footer_tourism,
+.footer_business,
+.footer_contact {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ---- SECTION TITLES ---- */
+.footer_tourism_text,
+.footer_business_text,
+.footer_contact_text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 8px;
+}
+
+/* ---- LINKS ---- */
+.footer_tourism_links,
+.footer_business_links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer_tourism_links a,
+.footer_business_links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.2s ease;
+}
+
+.footer_tourism_links a:hover,
+.footer_business_links a:hover {
+    opacity: 0.7;
+}
+
+/* ---- SOCIALS ---- */
+.footer_contact_links {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+}
+
+.footer_contact_links a {
+    color: #ffffff;
+    font-size: 28px;
+    transition: opacity 0.2s ease;
+}
+
+.footer_contact_links a:hover {
+    opacity: 0.7;
+}
+
+/* ---- BOTTOM BAR ---- */
+.footer_bottom {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    padding-top: 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #ffffff;
+}
