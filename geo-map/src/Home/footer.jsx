@@ -1,0 +1,40 @@
+import React from "react";
+import "./footer.css";
+
+const Footer = () => {
+    return (
+        <div className="footer">    
+            <div className="footer_tourism">
+                <span className="footer_tourism_text">Related Website</span>
+                <div className="footer_tourism_links">
+                    <a href="https://www.tourism.gov.ph">Department of Tourism</a>
+                    <a href="https://thephilippines.online">Travel Philippines</a>
+                </div>
+            </div>
+
+            <div className="footer_business">
+                <span className="footer_business_text">Business Registration</span>
+                <div className="footer_business_links">
+                    <a href="https://youtu.be/2q6G8pIU9PQ">Requirements</a>
+                    <a href="https://youtu.be/2q6G8pIU9PQ">Submission</a>
+                    <a href="https://youtu.be/2q6G8pIU9PQ">Contact Us</a>
+                </div>
+            </div>
+
+            <div className="footer_contact">
+                <span className="footer_contact_text">Our Socials</span>
+                <div className="footer_contact_links">
+                    <a href="#"><i className="fab fa-facebook"></i></a>
+                    <a href="#"><i className="fab fa-twitter"></i></a>
+                    <a href="#"><i className="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div className="footer_bottom">
+               Copyright  © 2026 Department of Tourism Philippines, All Rights Reserved 
+            </div>
+        </div>
+    );
+}
+
+export default Footer;

@@ -1,0 +1,366 @@
+/* addDestination.css */
+
+.add_destination_container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.add_dest_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.back_btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #666666;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.back_btn:hover {
+    background-color: #f9f9f9;
+    border-color: #999999;
+    color: #333333;
+}
+
+.publish_btn {
+    padding: 12px 24px;
+    background-color: #7FAC9C;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+}
+
+.publish_btn:hover {
+    background-color: #5a9080;
+}
+
+.add_dest_content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* ---- FORM SECTION ---- */
+.form_section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form_group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.form_group input,
+.form_group textarea {
+    padding: 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+    background-color: #f0f0f0;
+    color: #333333;
+}
+
+.form_group input:focus,
+.form_group textarea:focus {
+    outline: none;
+    border-color: #7FAC9C;
+    box-shadow: 0 0 0 3px rgba(127, 172, 156, 0.1);
+}
+
+.form_group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ---- IMAGE UPLOAD AREA ---- */
+.image_upload_area {
+    border: 2px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+}
+
+.image_upload_area:hover {
+    border-color: #7FAC9C;
+    background-color: #f0f8f6;
+}
+
+.image_upload_area.has-image {
+    border-style: solid;
+    padding: 0;
+    background-color: transparent;
+}
+
+.image_preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    max-height: 350px;
+}
+
+.upload_icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.image_upload_area p {
+    margin: 8px 0;
+    color: #666666;
+    font-size: 14px;
+}
+
+.upload_icon + p {
+    font-weight: 600;
+    color: #333333;
+    font-size: 16px;
+}
+
+.upload_hint {
+    font-size: 13px;
+    color: #999999;
+}
+
+.upload_or {
+    font-weight: 600;
+    color: #999999;
+    margin: 16px 0 8px 0;
+}
+
+.upload_click {
+    color: #7FAC9C;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* ---- SIDEBAR SECTION ---- */
+.sidebar_section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar_box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.sidebar_box h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+}
+
+/* ---- CATEGORIES ---- */
+.categories_list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.category_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333333;
+}
+
+.category_item input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: #7FAC9C;
+    width: 18px;
+    height: 18px;
+    background-color: #f0f0f0;
+}
+
+.category_item span {
+    user-select: none;
+}
+
+/* ---- GEOLOCATION ---- */
+.geo_group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.geo_group:last-of-type {
+    margin-bottom: 20px;
+}
+
+.geo_group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666666;
+}
+
+.geo_group input {
+    padding: 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    background-color: #f0f0f0;
+    color: #333333;
+}
+
+.geo_group input:focus {
+    outline: none;
+    border-color: #7FAC9C;
+    box-shadow: 0 0 0 3px rgba(127, 172, 156, 0.1);
+}
+
+.commute_route_btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #7FAC9C;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+}
+
+.commute_route_btn:hover {
+    background-color: #5a9080;
+}
+
+/* ---- RESPONSIVE DESIGN ---- */
+@media (max-width: 1024px) {
+    .add_dest_content {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar_section {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .sidebar_box {
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .add_destination_container {
+        padding: 20px;
+    }
+
+    .add_dest_header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .back_btn,
+    .publish_btn {
+        width: 100%;
+    }
+
+    .add_dest_content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .sidebar_section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sidebar_box {
+        flex: 1;
+    }
+
+    .image_upload_area {
+        min-height: 200px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .add_destination_container {
+        padding: 16px;
+    }
+
+    .form_group {
+        gap: 6px;
+    }
+
+    .form_group label {
+        font-size: 13px;
+    }
+
+    .form_group input,
+    .form_group textarea {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .image_upload_area {
+        min-height: 150px;
+        padding: 20px;
+    }
+
+    .upload_icon {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    .sidebar_box {
+        padding: 16px;
+    }
+
+    .sidebar_box h3 {
+        font-size: 14px;
+    }
+
+    .category_item {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,287 @@
+/* adminDashboard.css */
+
+.admin_dashboard_container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin-top: 70px;
+}
+
+.admin_dashboard_content {
+    flex: 1;
+    margin-left: 180px;
+    padding: 30px;
+}
+
+/* ---- HEADER ---- */
+.dashboard_header {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard_welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.welcome_text {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.logout_menu_wrapper {
+    position: relative;
+}
+
+.welcome_dropdown {
+    background: none;
+    border: none;
+    color: #7FAC9C;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.2s ease;
+}
+
+.welcome_dropdown:hover {
+    color: #5a9080;
+}
+
+.logout_dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 150px;
+    margin-top: 8px;
+}
+
+.logout_option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    color: #d9534f;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+    text-align: left;
+}
+
+.logout_option:hover {
+    background-color: #f9f9f9;
+}
+
+/* ---- STATS CARDS ---- */
+.stats_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.stat_card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat_card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat_label {
+    font-size: 15px;
+    color: #666666;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.stat_value {
+    font-size: 42px;
+    font-weight: 700;
+    color: #7FAC9C;
+}
+
+/* ---- RECENTLY ADDED SECTION ---- */
+.recently_added_section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section_title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+    margin: 0 0 24px 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.destinations_list {
+    min-height: 200px;
+}
+
+.empty_state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: #999999;
+    font-size: 16px;
+}
+
+.empty_state p {
+    margin: 0;
+}
+
+/* ---- DESTINATION CONTENT ---- */
+.destination_content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ---- RESPONSIVE DESIGN ---- */
+@media (max-width: 1200px) {
+    .stats_container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .stat_value {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 968px) {
+    .admin_dashboard_content {
+        margin-left: 180px;
+        padding: 20px;
+    }
+
+    .dashboard_header {
+        padding: 16px 20px;
+        margin-bottom: 24px;
+    }
+
+    .welcome_text {
+        font-size: 20px;
+    }
+
+    .stats_container {
+        gap: 16px;
+        margin-bottom: 30px;
+    }
+
+    .stat_card {
+        padding: 24px;
+    }
+
+    .stat_value {
+        font-size: 32px;
+    }
+
+    .recently_added_section {
+        padding: 24px;
+    }
+
+    .section_title {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin_dashboard_content {
+        margin-left: 60px;
+        padding: 16px;
+    }
+
+    .dashboard_header {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+
+    .welcome_text {
+        font-size: 18px;
+    }
+
+    .stats_container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .stat_card {
+        padding: 20px;
+    }
+
+    .stat_value {
+        font-size: 28px;
+    }
+
+    .recently_added_section {
+        padding: 20px;
+    }
+
+    .section_title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin_dashboard_content {
+        margin-left: 60px;
+        padding: 12px;
+    }
+
+    .dashboard_header {
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+
+    .welcome_text {
+        font-size: 16px;
+    }
+
+    .stats_container {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .stat_card {
+        padding: 16px;
+    }
+
+    .stat_value {
+        font-size: 24px;
+    }
+
+    .recently_added_section {
+        padding: 16px;
+    }
+
+    .destinations_list {
+        min-height: 150px;
+    }
+}

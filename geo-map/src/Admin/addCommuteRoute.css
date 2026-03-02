@@ -1,0 +1,169 @@
+/* addCommuteRoute.css */
+
+.commute_route_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.commute_route_modal {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+}
+
+.modal_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal_title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.modal_close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #999999;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.modal_close:hover {
+    color: #333333;
+}
+
+.modal_content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.route_group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.route_group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.route_group input,
+.transport_select {
+    padding: 10px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    color: #333333;
+    transition: border-color 0.2s ease;
+}
+
+.route_group input:focus,
+.transport_select:focus {
+    outline: none;
+    border-color: #7FAC9C;
+    box-shadow: 0 0 0 3px rgba(127, 172, 156, 0.1);
+}
+
+.transport_select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3svgxmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px;
+    padding-right: 32px;
+}
+
+.modal_footer {
+    padding: 20px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save_route_btn {
+    padding: 10px 24px;
+    background-color: #7FAC9C;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+}
+
+.save_route_btn:hover {
+    background-color: #5a9080;
+}
+
+/* ---- RESPONSIVE DESIGN ---- */
+@media (max-width: 600px) {
+    .commute_route_modal {
+        max-width: calc(100% - 40px);
+        margin: 0 20px;
+    }
+
+    .modal_header {
+        padding: 16px 20px;
+    }
+
+    .modal_title {
+        font-size: 16px;
+    }
+
+    .modal_content {
+        padding: 20px;
+        gap: 14px;
+    }
+
+    .route_group label {
+        font-size: 13px;
+    }
+
+    .route_group input,
+    .transport_select {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .modal_footer {
+        padding: 16px 20px;
+    }
+
+    .save_route_btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}

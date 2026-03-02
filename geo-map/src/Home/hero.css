@@ -1,0 +1,97 @@
+/* hero.css */
+
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---- BACKGROUND IMAGE ---- */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/hero_img.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.6);
+    z-index: 0;
+}
+
+/* ---- CONTENT ---- */
+.hero_content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* hide the img tag since we use it as background */
+.hero_img {
+    display: none;
+}
+
+/* ---- TITLE (optional, looks good over hero) ---- */
+.hero_content::before {
+    content: "Welcome to Rizal";
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+/* ---- SEARCH FORM ---- */
+.search_form {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 50px;
+    padding: 6px 6px 6px 20px;
+    width: 500px;
+    max-width: 90vw;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.search_input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    color: #333333;
+    padding: 8px 0;
+}
+
+.search_input::placeholder {
+    color: #999999;
+}
+
+.search_btn {
+    background-color: #7FAC9C;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.search_btn:hover {
+    background-color: #5a9080;
+}

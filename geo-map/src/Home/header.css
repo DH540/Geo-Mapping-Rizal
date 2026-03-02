@@ -1,0 +1,116 @@
+/* header.css */
+
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(
+    to bottom,
+    rgba(20, 50, 35, 0.85),
+    rgba(20, 50, 35, 0.4)
+    );
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+/* ---- LOGO ---- */
+.header_rightside {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ---- NAV MIDDLE ---- */
+.header_middle {
+    display: flex;
+    gap: 24px;
+}
+
+.header_middle_text {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+
+/* ---- SIDEBAR BUTTON ---- */
+.header_leftside {
+    display: flex;
+    align-items: center;
+}
+
+.openbtn {
+    font-size: 22px;
+    background-color: transparent;
+    color: #fcf8f8;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.openbtn:hover {
+    background-color: rgba(103, 91, 91, 0.15);
+}
+
+/* ---- SIDEPANEL ---- */
+.sidepanel {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #7FAC9C;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    z-index: 2000;
+    padding-top: 60px;
+}
+
+.sidepanel.open {
+    width: 260px;
+}
+
+.sidepanel a {
+    display: block;
+    padding: 12px 24px;
+    color: #d8f3dc;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.sidepanel a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #696565;
+}
+
+.closebtn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 28px !important;
+    color: #ffffff !important;
+}
+
+.closebtn:hover {
+    color: #b7e4c7 !important;
+    background-color: transparent !important;
+}

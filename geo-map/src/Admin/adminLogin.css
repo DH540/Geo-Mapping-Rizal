@@ -1,0 +1,263 @@
+/* adminLogin.css */
+
+.admin_login_container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* ---- MAIN CONTENT AREA ---- */
+.admin_login_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    margin-top: 70px;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    position: relative;
+}
+
+/* ---- LEFT SIDE - BACKGROUND IMAGE WITH OVERLAY ---- */
+.admin_login_content::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url("/admin_login_img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* ---- OVERLAY ON BACKGROUND IMAGE ---- */
+.admin_login_content::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* ---- RIGHT SIDE - FORM ---- */
+.admin_login_form_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #ffffff;
+    grid-column: 2;
+    z-index: 2;
+    position: relative;
+}
+
+.admin_login_form_wrapper {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* ---- TITLE ---- */
+.admin_login_title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 16px;
+}
+
+/* ---- FORM ---- */
+.admin_login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ---- FORM GROUPS ---- */
+.admin_form_group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: border-color 0.2s ease;
+}
+
+.admin_form_group:focus-within {
+    border-color: #7FAC9C;
+    background-color: #f0f8f6;
+}
+
+.admin_form_label {
+    display: flex;
+    align-items: center;
+    color: #7FAC9C;
+    font-size: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.admin_form_input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+    color: #333333;
+    font-family: inherit;
+}
+
+.admin_form_input::placeholder {
+    color: #999999;
+}
+
+/* ---- FORGOT PASSWORD ---- */
+.admin_forgot_password {
+    text-align: right;
+    margin-top: -8px;
+}
+
+.admin_forgot_password a {
+    color: #7FAC9C;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.admin_forgot_password a:hover {
+    color: #5a9080;
+    text-decoration: underline;
+}
+
+/* ---- LOGIN BUTTON ---- */
+.admin_login_btn {
+    padding: 12px 32px;
+    height: 48px;
+    background-color: #7FAC9C;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 16px;
+    font-family: inherit;
+}
+
+.admin_login_btn:hover {
+    background-color: #5a9080;
+}
+
+.admin_login_btn:active {
+    transform: scale(0.98);
+}
+
+/* ---- BACK BUTTON ---- */
+.admin_back_btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    padding: 10px 20px;
+    background-color: #7FAC9C;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    z-index: 50;
+    font-family: inherit;
+}
+
+.admin_back_btn:hover {
+    background-color: #5a9080;
+}
+
+/* ---- RESPONSIVE DESIGN ---- */
+@media (max-width: 1024px) {
+    .admin_login_content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .admin_login_content::before {
+        width: 50%;
+    }
+
+    .admin_login_content::after {
+        width: 50%;
+    }
+
+    .admin_login_form_section {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin_login_content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+    }
+
+    .admin_login_content::before {
+        width: 100%;
+        height: 100%;
+    }
+
+    .admin_login_content::after {
+        width: 100%;
+        height: 100%;
+    }
+
+    .admin_login_form_section {
+        grid-column: 1;
+        grid-row: 2;
+        position: relative;
+        border-radius: 20px 20px 0 0;
+        padding: 30px 20px;
+        min-height: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin_login_form_section {
+        padding: 20px;
+        min-height: 55%;
+    }
+
+    .admin_login_title {
+        font-size: 26px;
+    }
+
+    .admin_login_form_wrapper {
+        gap: 24px;
+    }
+
+    .admin_form_group {
+        padding: 10px 12px;
+    }
+
+    .admin_form_input {
+        font-size: 14px;
+    }
+
+    .admin_back_btn {
+        padding: 8px 14px;
+        font-size: 12px;
+        bottom: 15px;
+        left: 15px;
+    }
+}

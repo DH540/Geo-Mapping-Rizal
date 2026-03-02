@@ -1,0 +1,123 @@
+/* offers.css */
+
+.offers {
+    width: 100%;
+    padding: 60px 40px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.offers_container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ---- HEADINGS ---- */
+.offers_container h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    margin: 0;
+}
+
+.offers_container h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666666;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+/* ---- CARD GRID ---- */
+.card_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+/* ---- CARD ---- */
+.card {
+    border-radius: 16px;
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- DARK OVERLAY ON CARD ---- */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.1)
+    );
+    border-radius: 16px;
+}
+
+/* ---- CARD LABEL ---- */
+.card span {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* ---- MORE BUTTON ---- */
+.more_btn {
+    margin-top: 10px;
+    padding: 10px 32px;
+    background-color: #dadddc;
+    color: #0b0000;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.more_btn:hover {
+    background-color: #5a9080;
+    transform: scale(1.05);
+}
+
+/* ---- EXTRA CARDS DROPDOWN ---- */
+.card_grid_more {
+    animation: fadeDown 0.3s ease;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
