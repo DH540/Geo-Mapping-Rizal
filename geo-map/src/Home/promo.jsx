@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./promo.css";
 
 const images = [
@@ -9,6 +10,7 @@ const images = [
 
 const Promo = () => {
     const [current, setCurrent] = useState(0);
+    const navigate = useNavigate();
 
     // Auto slide every 4 seconds
     useEffect(() => {
@@ -36,7 +38,9 @@ const Promo = () => {
             <div className="promo_container">
                 <h2>Discover Rizal's Hidden Gems!</h2>
                 <p>Explore the best outdoor activities and nature spots in Rizal. Whether you're into hiking, camping, or just want to relax by the lake, we've got you covered!</p>
-                <button className="promo_btn">Explore Now</button>
+                <button className="promo_btn" onClick={() => { navigate('/explore'); closeNav(); }}>
+                    Explore Now
+                </button>
             </div>
 
             {/* ARROWS */}

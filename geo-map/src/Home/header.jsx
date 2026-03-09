@@ -1,45 +1,26 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./header.css";
 
-const Header = ({ onAdminClick, onHomeClick, onRoutesClick, onContactClick, currentPage }) => {
+const Header = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const location = useLocation();
 
-    const openNav = () => {
-        setSidebarOpen(true);
-    };
+    const openNav = () => setSidebarOpen(true);
+    const closeNav = () => setSidebarOpen(false);
 
-    const closeNav = () => {
-        setSidebarOpen(false);
-    };
-    const handleHomeClick = (e) => {
-        e.preventDefault();
-        closeNav();
-        if (onHomeClick) {
-            onHomeClick();
-        }
-    };
+    // helper to highlight active link
+    const isActive = (path) => location.pathname === path ? "active_link" : "";
 
-    const handleAdminClick = (e) => {
-        e.preventDefault();
-        closeNav();
-        if (onAdminClick) {
-            onAdminClick();
-        }
-    };
-
-    const handleRoutesClick = (e) => {
-        e.preventDefault();
-        closeNav();
-        if (onRoutesClick) {
-            onRoutesClick();
-        }
-    };
-
-    const handleContactClick = (e) => {
-        e.preventDefault();
-        closeNav();
-        if (onContactClick) {
-            onContactClick();
+    const getPageTitle = () => {
+        switch (location.pathname) {
+            case "/": return "Home";
+            case "/explore": return "Explore";
+            case "/routes": return "Routes";
+            case "/contact": return "Contact Us";
+            case "/admin": return "Admin Login";
+            case "/admin/dashboard": return "Admin Dashboard";
+            default: return "Home";
         }
     };
 
@@ -47,22 +28,24 @@ const Header = ({ onAdminClick, onHomeClick, onRoutesClick, onContactClick, curr
         <div className="header">
             <div className="header_rightside">
                 <div className="logo">
-                    <img src="/logo_geo.png" alt="logo" />
+                    <Link to="/">
+                        <img src="/logo_geo.png" alt="logo" />
+                    </Link>
                 </div>
             </div>
 
             <div className="header_middle">
-                <span className="header_middle_text">{currentPage === 'admin' ? 'Admin' : currentPage === 'routes' ? 'Routes' : currentPage === 'contact' ? 'Contact Us' : 'Home'}</span>
+                <span className="header_middle_text">{getPageTitle()}</span>
             </div>
 
             <div className="header_leftside">
-                <div id="mySidepanel" className={`sidepanel ${sidebarOpen ? 'open' : ''}`}>
+                <div className={`sidepanel ${sidebarOpen ? "open" : ""}`}>
                     <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
-                    <a href="Home_Page" onClick={handleHomeClick}>Home</a>
-                    <a href="#">Explore</a>
-                    <a href="Route_Page" onClick={handleRoutesClick}>Routes</a>
-                    <a href="Admin_Page" onClick={handleAdminClick}>I'm an Admin</a>
-                    <a href="Contact_Page" onClick={handleContactClick}>Contact Us</a>
+                    <Link to="/" onClick={closeNav} className={isActive("/")}>Home</Link>
+                    <Link to="/explore" onClick={closeNav} className={isActive("/explore")}>Explore</Link>
+                    <Link to="/routes" onClick={closeNav} className={isActive("/routes")}>Routes</Link>
+                    <Link to="/admin" onClick={closeNav} className={isActive("/admin")}>I'm an Admin</Link>
+                    <Link to="/contact" onClick={closeNav} className={isActive("/contact")}>Contact Us</Link>
                 </div>
 
                 <button className="openbtn" onClick={openNav}>&#9776;</button>
@@ -71,4 +54,4 @@ const Header = ({ onAdminClick, onHomeClick, onRoutesClick, onContactClick, curr
     );
 }
 
-export default Header;  
+export default Header;

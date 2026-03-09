@@ -1,0 +1,281 @@
+/* explore.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.explore_page {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.explore_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.explore_background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+/* ---- MAIN CONTENT ---- */
+.explore_content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 80px 40px 40px 40px;
+    gap: 0;
+    height: calc(100vh - 80px);
+}
+
+/* ---- LEFT - MAP ---- */
+.explore_leftside {
+    flex: 1;                        /* ← takes equal space */
+    border-radius: 12px 0 0 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.explore_leftside .leaflet-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* ---- RIGHT - SEARCH PANEL ---- */
+.explore_rightside {
+    flex: 1;                        /* ← takes equal space */
+    background-color: #ffffff;
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+/* ---- SEARCH BAR ---- */
+.explore_search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid #cccccc;
+    border-radius: 50px;
+    padding: 12px 20px;
+    background-color: #ffffff;
+}
+
+.explore_search input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #333333;
+    width: 100%;
+    background: transparent;
+}
+
+.explore_search input::placeholder {
+    color: #aaaaaa;
+}
+
+.explore_search span {
+    font-size: 20px;
+    color: #555555;
+}
+
+.clear_btn {
+    background: none;
+    border: none;
+    color: #aaaaaa;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear_btn:hover {
+    color: #333333;
+}
+
+/* ---- ACTIVITY FILTERS ---- */
+.activity_filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.activity_filters span {
+    font-size: 14px;
+    color: #555555;
+    font-weight: 500;
+}
+
+.filter_tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    border: 1.5px solid #cccccc;
+    background-color: #f5f5f5;
+    font-size: 13px;
+    color: #333333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter_tag:hover {
+    border-color: #7FAC9C;
+    background-color: #f0f7f4;
+    color: #7FAC9C;
+}
+
+.filter_tag.active {
+    border-color: #7FAC9C;
+    background-color: #e8f5f0;
+    color: #7FAC9C;
+    font-weight: 600;
+}
+
+/* ---- RESULTS COUNT ---- */
+.results_count {
+    font-size: 12px;
+    color: #888888;
+    padding-left: 4px;
+}
+
+/* ---- RESULTS LIST ---- */
+.explore_results {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* ---- PLACE CARD ---- */
+.place_card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 4px;
+    border-bottom: 1px solid #eeeeee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.place_card:hover {
+    background-color: #f9f9f9;
+}
+
+.place_card.active {
+    background-color: #f0f7f4;
+}
+
+.place_card_left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.place_name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.place_location {
+    font-size: 13px;
+    color: #777777;
+}
+
+.place_category_badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    border: 1.5px solid #cccccc;
+    background-color: #f5f5f5;
+    font-size: 13px;
+    color: #555555;
+    white-space: nowrap;
+}
+
+/* ---- NO RESULTS ---- */
+.no_results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.no_results span { font-size: 40px; }
+.no_results p { font-size: 15px; color: #333333; }
+.no_results small { font-size: 12px; color: #999999; }
+
+/* ---- SELECTED PLACE DETAIL ---- */
+.place_detail {
+    border-top: 2px solid #7FAC9C;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.place_detail_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.place_detail_header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.close_btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #aaaaaa;
+}
+
+.close_btn:hover { color: #333333; }
+
+.place_detail p {
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.place_detail_coords small {
+    font-size: 11px;
+    color: #999999;
+}
+
+.place_category {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7FAC9C;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

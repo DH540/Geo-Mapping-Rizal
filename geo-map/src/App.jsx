@@ -1,97 +1,57 @@
 import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
+
 import Header from './Home/header';
 import Footer from './Home/footer';
 import Hero from './Home/hero';
 import Offers from './Home/offers';
 import Promo from './Home/promo';
-import Route from './Route/route';
+import RouteMap from './Route/route';
+import Explore from './Explore/explore';
 import Contact from './Contact/contact';
 import AdminLogin from './Admin/adminLogin';
 import AdminDashboard from './Admin/adminDashboard';
 
 export default function App() {
-    const [currentPage, setCurrentPage] = useState('home');
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
-    const handleAdminClick = () => {
-        setCurrentPage('admin');
-    };
-
-    const handleRoutesClick = () => {
-        setCurrentPage('routes');
-    };
-
-    const handleContactClick = () => {
-        setCurrentPage('contact');
-    };
-
-    const handleBackToHome = () => {
-        setCurrentPage('home');
-        setIsAdminLoggedIn(false);
-    };
-
-    const handleLoginSuccess = () => {
-        setIsAdminLoggedIn(true);
-    };
-
-    const handleLogout = () => {
-        setIsAdminLoggedIn(false);
-        setCurrentPage('home');
-    };
-
-    // Admin Dashboard View (if logged in)
-    if (currentPage === 'admin' && isAdminLoggedIn) {
-        return (
-            <div className="App">
-                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
-                <AdminDashboard onLogout={handleLogout} />
-            </div>
-        );
-    }
-
-    // Admin Login View
-    if (currentPage === 'admin') {
-        return (
-            <div className="App">
-                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
-                <AdminLogin onBackToHome={handleBackToHome} onLoginSuccess={handleLoginSuccess} />
-                <Footer />
-            </div>
-        );
-    }
-
-    // Routes View
-    if (currentPage === 'routes') {
-        return (
-            <div className="App">
-                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
-                <Route />
-                <Footer />
-            </div>
-        );
-    }
-
-    // Contact Us View
-    if (currentPage === 'contact') {
-        return (
-            <div className="App">
-                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
-                <Contact />
-                <Footer />
-            </div>
-        );
-    }
-
-    // Home View
     return (
         <div className="App">
-            <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
-            <main>
-                <Hero />
-                <Offers />
-                <Promo />
-            </main>
+            <Header />
+            <Routes>
+                {/* Home */}
+                <Route path="/" element={
+                    <main>
+                        <Hero />
+                        <Offers />
+                        <Promo />
+                    </main>
+                } />
+
+                {/* Explore */}
+                <Route path="/explore" element={<Explore />} />
+
+                {/* Routes */}
+                <Route path="/routes" element={<RouteMap />} />
+
+                {/* Contact */}
+                <Route path="/contact" element={<Contact />} />
+
+                {/* Admin Login */}
+                <Route path="/admin" element={
+                    isAdminLoggedIn
+                        ? <Navigate to="/admin/dashboard" />
+                        : <AdminLogin onLoginSuccess={() => setIsAdminLoggedIn(true)} />
+                } />
+
+                {/* Admin Dashboard - protected */}
+                <Route path="/admin/dashboard" element={
+                    isAdminLoggedIn
+                        ? <AdminDashboard onLogout={() => setIsAdminLoggedIn(false)} />
+                        : <Navigate to="/admin" />
+                } />
+            </Routes>
             <Footer />
         </div>
     );
