@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./header.css";
 
-const Header = ({ onAdminClick, onHomeClick, onRoutesClick, currentPage }) => {
+const Header = ({ onAdminClick, onHomeClick, onRoutesClick, onContactClick, currentPage }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const openNav = () => {
@@ -35,6 +35,14 @@ const Header = ({ onAdminClick, onHomeClick, onRoutesClick, currentPage }) => {
         }
     };
 
+    const handleContactClick = (e) => {
+        e.preventDefault();
+        closeNav();
+        if (onContactClick) {
+            onContactClick();
+        }
+    };
+
     return (
         <div className="header">
             <div className="header_rightside">
@@ -44,7 +52,7 @@ const Header = ({ onAdminClick, onHomeClick, onRoutesClick, currentPage }) => {
             </div>
 
             <div className="header_middle">
-                <span className="header_middle_text">{currentPage === 'admin' ? 'Admin' : currentPage === 'routes' ? 'Routes' : 'Home'}</span>
+                <span className="header_middle_text">{currentPage === 'admin' ? 'Admin' : currentPage === 'routes' ? 'Routes' : currentPage === 'contact' ? 'Contact Us' : 'Home'}</span>
             </div>
 
             <div className="header_leftside">
@@ -54,7 +62,7 @@ const Header = ({ onAdminClick, onHomeClick, onRoutesClick, currentPage }) => {
                     <a href="#">Explore</a>
                     <a href="Route_Page" onClick={handleRoutesClick}>Routes</a>
                     <a href="Admin_Page" onClick={handleAdminClick}>I'm an Admin</a>
-                    <a href="#">Contact Us</a>
+                    <a href="Contact_Page" onClick={handleContactClick}>Contact Us</a>
                 </div>
 
                 <button className="openbtn" onClick={openNav}>&#9776;</button>

@@ -6,6 +6,7 @@ import Hero from './Home/hero';
 import Offers from './Home/offers';
 import Promo from './Home/promo';
 import Route from './Route/route';
+import Contact from './Contact/contact';
 import AdminLogin from './Admin/adminLogin';
 import AdminDashboard from './Admin/adminDashboard';
 
@@ -19,6 +20,10 @@ export default function App() {
 
     const handleRoutesClick = () => {
         setCurrentPage('routes');
+    };
+
+    const handleContactClick = () => {
+        setCurrentPage('contact');
     };
 
     const handleBackToHome = () => {
@@ -39,7 +44,7 @@ export default function App() {
     if (currentPage === 'admin' && isAdminLoggedIn) {
         return (
             <div className="App">
-                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} currentPage={currentPage} />
+                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
                 <AdminDashboard onLogout={handleLogout} />
             </div>
         );
@@ -49,7 +54,7 @@ export default function App() {
     if (currentPage === 'admin') {
         return (
             <div className="App">
-                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} currentPage={currentPage} />
+                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
                 <AdminLogin onBackToHome={handleBackToHome} onLoginSuccess={handleLoginSuccess} />
                 <Footer />
             </div>
@@ -60,8 +65,19 @@ export default function App() {
     if (currentPage === 'routes') {
         return (
             <div className="App">
-                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} currentPage={currentPage} />
+                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
                 <Route />
+                <Footer />
+            </div>
+        );
+    }
+
+    // Contact Us View
+    if (currentPage === 'contact') {
+        return (
+            <div className="App">
+                <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
+                <Contact />
                 <Footer />
             </div>
         );
@@ -70,7 +86,7 @@ export default function App() {
     // Home View
     return (
         <div className="App">
-            <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} currentPage={currentPage} />
+            <Header onAdminClick={handleAdminClick} onHomeClick={handleBackToHome} onRoutesClick={handleRoutesClick} onContactClick={handleContactClick} currentPage={currentPage} />
             <main>
                 <Hero />
                 <Offers />
