@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host     = "localhost";
-    private $db_name  = "geo_map_rizal";
-    private $username = "root";
-    private $password = "";
+    private $host     = "sql210.infinityfree.com";
+    private $db_name  = "if0_41362257_rizal_database";
+    private $username = "if0_41362257";
+    private $password = "MyWebSys2026";
     private $conn     = null;
 
     // Returns the database connection
