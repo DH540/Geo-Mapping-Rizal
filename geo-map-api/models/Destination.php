@@ -6,9 +6,10 @@ class Destination {
 
     public $destination_id;
     public $name;
+    public $location;
     public $municipality;
     public $description;
-    public $email;
+    public $contact_email;
     public $latitude;
     public $longitude;
     public $created_at;
@@ -20,8 +21,8 @@ class Destination {
 
     // Fetches all destinations
     public function getAll() {
-        $query = "SELECT destination_id, name, municipality, description,
-                         email, latitude, longitude, created_at, updated_at
+        $query = "SELECT destination_id, name, location, municipality, description,
+                         contact_email, latitude, longitude, created_at, updated_at
                   FROM " . $this->table . "
                   ORDER BY created_at DESC";
 
@@ -33,8 +34,8 @@ class Destination {
 
     // Fetches a single destination by ID
     public function getOne() {
-        $query = "SELECT destination_id, name, municipality, description,
-                         email, latitude, longitude, created_at, updated_at
+        $query = "SELECT destination_id, name, location, municipality, description,
+                         contact_email, latitude, longitude, created_at, updated_at
                   FROM " . $this->table . "
                   WHERE destination_id = :destination_id
                   LIMIT 1";
@@ -49,9 +50,10 @@ class Destination {
         if ($row) {
             $this->destination_id = $row["destination_id"];
             $this->name           = $row["name"];
+            $this->location       = $row["location"];
             $this->municipality   = $row["municipality"];
             $this->description    = $row["description"];
-            $this->email          = $row["email"];
+            $this->contact_email  = $row["contact_email"];
             $this->latitude       = $row["latitude"];
             $this->longitude      = $row["longitude"];
             $this->created_at     = $row["created_at"];
@@ -65,24 +67,26 @@ class Destination {
     // Adds a new destination
     public function create() {
         $query = "INSERT INTO " . $this->table . "
-                    (name, municipality, description, email, latitude, longitude)
+                    (name, location, municipality, description, contact_email, latitude, longitude)
                   VALUES
-                    (:name, :municipality, :description, :email, :latitude, :longitude)";
+                    (:name, :location, :municipality, :description, :contact_email, :latitude, :longitude)";
 
         $stmt = $this->conn->prepare($query);
 
         // Sanitize inputs
         $this->name         = htmlspecialchars(strip_tags($this->name));
+        $this->location     = htmlspecialchars(strip_tags($this->location));
         $this->municipality = htmlspecialchars(strip_tags($this->municipality));
         $this->description  = htmlspecialchars(strip_tags($this->description));
-        $this->email        = htmlspecialchars(strip_tags($this->email));
+        $this->contact_email = htmlspecialchars(strip_tags($this->contact_email));
         $this->latitude     = htmlspecialchars(strip_tags($this->latitude));
         $this->longitude    = htmlspecialchars(strip_tags($this->longitude));
 
         $stmt->bindParam(":name",         $this->name);
+        $stmt->bindParam(":location",     $this->location);
         $stmt->bindParam(":municipality", $this->municipality);
         $stmt->bindParam(":description",  $this->description);
-        $stmt->bindParam(":email",        $this->email);
+        $stmt->bindParam(":contact_email", $this->contact_email);
         $stmt->bindParam(":latitude",     $this->latitude);
         $stmt->bindParam(":longitude",    $this->longitude);
 
@@ -98,9 +102,10 @@ class Destination {
     public function update() {
         $query = "UPDATE " . $this->table . "
                   SET name         = :name,
+                      location     = :location,
                       municipality = :municipality,
                       description  = :description,
-                      email        = :email,
+                      contact_email = :contact_email,
                       latitude     = :latitude,
                       longitude    = :longitude
                   WHERE destination_id = :destination_id";
@@ -108,17 +113,19 @@ class Destination {
         $stmt = $this->conn->prepare($query);
 
         $this->name           = htmlspecialchars(strip_tags($this->name));
+        $this->location       = htmlspecialchars(strip_tags($this->location));
         $this->municipality   = htmlspecialchars(strip_tags($this->municipality));
         $this->description    = htmlspecialchars(strip_tags($this->description));
-        $this->email          = htmlspecialchars(strip_tags($this->email));
+        $this->contact_email  = htmlspecialchars(strip_tags($this->contact_email));
         $this->latitude       = htmlspecialchars(strip_tags($this->latitude));
         $this->longitude      = htmlspecialchars(strip_tags($this->longitude));
         $this->destination_id = htmlspecialchars(strip_tags($this->destination_id));
 
         $stmt->bindParam(":name",           $this->name);
+        $stmt->bindParam(":location",       $this->location);
         $stmt->bindParam(":municipality",   $this->municipality);
         $stmt->bindParam(":description",    $this->description);
-        $stmt->bindParam(":email",          $this->email);
+        $stmt->bindParam(":contact_email",  $this->contact_email);
         $stmt->bindParam(":latitude",       $this->latitude);
         $stmt->bindParam(":longitude",      $this->longitude);
         $stmt->bindParam(":destination_id", $this->destination_id);

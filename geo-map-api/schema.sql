@@ -16,9 +16,10 @@ CREATE TABLE IF NOT EXISTS user (
 CREATE TABLE IF NOT EXISTS destination (
     destination_id  INT             NOT NULL AUTO_INCREMENT,
     name            VARCHAR(255)    NOT NULL,
+    location        VARCHAR(255)    NOT NULL,
     municipality    VARCHAR(255)    NOT NULL,
     description     TEXT            NOT NULL,
-    email           VARCHAR(255)    NOT NULL,
+    contact_email   VARCHAR(255)    NOT NULL,
     latitude        DECIMAL(10, 7)  NOT NULL,
     longitude       DECIMAL(10, 7)  NOT NULL,
     created_at      TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
@@ -29,14 +30,14 @@ CREATE TABLE IF NOT EXISTS destination (
 CREATE TABLE IF NOT EXISTS destination_images (
     image_id        INT             NOT NULL AUTO_INCREMENT,
     destination_id  INT             NOT NULL,
-    image_url       VARCHAR(500)    NOT NULL,
+    image_url       LONGTEXT        NOT NULL,
     PRIMARY KEY (image_id),
     FOREIGN KEY (destination_id) REFERENCES destination(destination_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS activity (
     activity_id     INT             NOT NULL AUTO_INCREMENT,
-    name            VARCHAR(100)    NOT NULL,
+    name            VARCHAR(100)    NOT NULL UNIQUE,
     PRIMARY KEY (activity_id)
 );
 
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS route_steps (
     FOREIGN KEY (destination_id) REFERENCES destination(destination_id) ON DELETE CASCADE
 );
 
-INSERT INTO activity (name) VALUES
+INSERT IGNORE INTO activity (name) VALUES
     ('Camping'),
     ('Hiking'),
     ('Mountain Climbing'),

@@ -67,5 +67,23 @@ class DestinationImages {
 
         return false;
     }
+
+    // Removes all images for a destination
+    public function deleteByDestination() {
+        $query = "DELETE FROM " . $this->table . "
+                  WHERE destination_id = :destination_id";
+
+        $stmt = $this->conn->prepare($query);
+
+        $this->destination_id = htmlspecialchars(strip_tags($this->destination_id));
+
+        $stmt->bindParam(":destination_id", $this->destination_id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
 }
 ?>
