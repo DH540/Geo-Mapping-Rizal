@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host     = "sql210.infinityfree.com";
-    private $db_name  = "if0_41362257_rizal_database";
-    private $username = "if0_41362257";
-    private $password = "MyWebSys2026";
+    private $host     = "fdb1032.awardspace.net";
+    private $db_name  = "4742039_rizaldb";
+    private $username = "4742039_rizaldb";
+    private $password = "WebSys2026";
     private $conn     = null;
 
     // Returns the database connection
