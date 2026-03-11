@@ -1,35 +1,48 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./adminLogin.css";
+import { loginAdmin } from "./services/authApi";
 
-const AdminLogin = ({ onBackToHome, onLoginSuccess }) => {
+const AdminLogin = ({ onLoginSuccess }) => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState("");
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        // Simple validation - in production you'd verify against a backend
-        if (email && password) {
-            console.log("Login successful:", { email });
-            onLoginSuccess();
+
+        if (!email || !password) {
+            setError("Email and password are required.");
+            return;
+        }
+
+        try {
+            setIsSubmitting(true);
+            setError("");
+
+            const user = await loginAdmin(email, password);
+            onLoginSuccess(user);
+        } catch (loginError) {
+            setError(loginError.message || "Login failed.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
     const handleForgotPassword = () => {
         console.log("Forgot password clicked");
-        // Add forgot password logic here
     };
 
     return (
         <div className="admin_login_container">
             <div className="admin_login_content">
-                {/* Right side - Login Form */}
                 <div className="admin_login_form_section">
                     <div className="admin_login_form_wrapper">
                         <h1 className="admin_login_title">Admin Portal</h1>
-                        
+
                         <form onSubmit={handleLogin} className="admin_login_form">
-                            {/* Email Input */}
                             <div className="admin_form_group">
                                 <label htmlFor="email" className="admin_form_label">
                                     <i className="fas fa-envelope"></i>
@@ -40,46 +53,44 @@ const AdminLogin = ({ onBackToHome, onLoginSuccess }) => {
                                     className="admin_form_input"
                                     placeholder="Enter Email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(event) => setEmail(event.target.value)}
                                     required
                                 />
                             </div>
 
-                            {/* Password Input */}
                             <div className="admin_form_group">
                                 <label htmlFor="password" className="admin_form_label">
                                     <i className="fas fa-lock"></i>
                                 </label>
                                 <input
-                                    type={showPassword ? "text" : "password"}
+                                    type="password"
                                     id="password"
                                     className="admin_form_input"
                                     placeholder="Enter Password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(event) => setPassword(event.target.value)}
                                     required
                                 />
                             </div>
 
-                            {/* Forgot Password Link */}
                             <div className="admin_forgot_password">
-                                <a href="#" onClick={(e) => { e.preventDefault(); handleForgotPassword(); }}>
+                                <a href="#" onClick={(event) => { event.preventDefault(); handleForgotPassword(); }}>
                                     Forgot password?
                                 </a>
                             </div>
 
-                            {/* Login Button */}
-                            <button type="submit" className="admin_login_btn">
-                                Login
+                            {error && <p className="admin_login_error">{error}</p>}
+
+                            <button type="submit" className="admin_login_btn" disabled={isSubmitting}>
+                                {isSubmitting ? "Signing in..." : "Login"}
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            {/* Back Button */}
-            <button className="admin_back_btn" onClick={onBackToHome}>
-                ← Back to Home
+            <button className="admin_back_btn" onClick={() => navigate("/")}>
+                Back to Home
             </button>
         </div>
     );

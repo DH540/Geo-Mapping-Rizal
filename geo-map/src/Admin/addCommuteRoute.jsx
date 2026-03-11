@@ -3,24 +3,23 @@ import "./addCommuteRoute.css";
 
 const AddCommuteRoute = ({ onClose, onSave }) => {
     const [routeData, setRouteData] = useState({
-        transportType: "tricycle",
+        transportType: "Tricycle",
         from: "",
-        to: ""
+        to: "",
     });
 
     const transportTypes = [
-        { value: "tricycle", label: "Tricycle" },
-        { value: "jeepney", label: "Jeepney" },
-        { value: "bus", label: "Bus" },
-        { value: "van", label: "Van" },
-        { value: "car", label: "Car" }
+        { value: "Tricycle", label: "Tricycle" },
+        { value: "Jeep", label: "Jeep" },
+        { value: "Bus", label: "Bus" },
+        { value: "Walk", label: "Walk" },
     ];
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setRouteData(prev => ({
+        setRouteData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -37,21 +36,21 @@ const AddCommuteRoute = ({ onClose, onSave }) => {
             <div className="commute_route_modal">
                 <div className="modal_header">
                     <h2 className="modal_title">Add Commute Route</h2>
-                    <button className="modal_close" onClick={onClose}>
-                        ×
+                    <button className="modal_close" onClick={onClose} type="button">
+                        x
                     </button>
                 </div>
 
                 <div className="modal_content">
                     <div className="route_group">
                         <label>Transport Type:</label>
-                        <select 
+                        <select
                             name="transportType"
                             value={routeData.transportType}
                             onChange={handleInputChange}
                             className="transport_select"
                         >
-                            {transportTypes.map(type => (
+                            {transportTypes.map((type) => (
                                 <option key={type.value} value={type.value}>
                                     {type.label}
                                 </option>
@@ -83,7 +82,7 @@ const AddCommuteRoute = ({ onClose, onSave }) => {
                 </div>
 
                 <div className="modal_footer">
-                    <button className="save_route_btn" onClick={handleSaveRoute}>
+                    <button className="save_route_btn" onClick={handleSaveRoute} type="button">
                         Save Route
                     </button>
                 </div>

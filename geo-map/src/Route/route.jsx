@@ -128,7 +128,7 @@ const Route = () => {
                     setLoading(false);
                 }
             );
-        } catch (err) {
+        } catch {
             setError("Something went wrong. Please try again.");
             setLoading(false);
         }

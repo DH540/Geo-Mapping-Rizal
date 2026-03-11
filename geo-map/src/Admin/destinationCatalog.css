@@ -40,8 +40,21 @@
     background-color: #5a9080;
 }
 
+.add_destination_btn:disabled,
+.edit_btn:disabled,
+.delete_btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .catalog_content {
     min-height: 400px;
+}
+
+.catalog_status_error {
+    margin-bottom: 16px;
+    color: #d9534f;
+    font-size: 14px;
 }
 
 .empty_catalog {

@@ -35,6 +35,7 @@
     font-size: 18px;
     font-weight: 600;
     color: #333333;
+    text-shadow: none;
 }
 
 .modal_close {
@@ -72,6 +73,12 @@
 .route_group label {
     font-size: 14px;
     font-weight: 500;
+    color: #333333;
+}
+
+.modal_header,
+.modal_content,
+.modal_content * {
     color: #333333;
 }
 

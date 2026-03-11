@@ -141,6 +141,12 @@
     text-decoration: underline;
 }
 
+.admin_login_error {
+    color: #d9534f;
+    font-size: 14px;
+    margin: 0;
+}
+
 /* ---- LOGIN BUTTON ---- */
 .admin_login_btn {
     padding: 12px 32px;
@@ -159,6 +165,11 @@
 
 .admin_login_btn:hover {
     background-color: #5a9080;
+}
+
+.admin_login_btn:disabled {
+    background-color: #9abdb1;
+    cursor: not-allowed;
 }
 
 .admin_login_btn:active {

@@ -38,7 +38,7 @@ const Promo = () => {
             <div className="promo_container">
                 <h2>Discover Rizal's Hidden Gems!</h2>
                 <p>Explore the best outdoor activities and nature spots in Rizal. Whether you're into hiking, camping, or just want to relax by the lake, we've got you covered!</p>
-                <button className="promo_btn" onClick={() => { navigate('/explore'); closeNav(); }}>
+                <button className="promo_btn" onClick={() => { navigate('/explore'); }}>
                     Explore Now
                 </button>
             </div>

@@ -142,6 +142,44 @@
     min-height: 200px;
 }
 
+.recent_destination_item {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.recent_destination_item:last-child {
+    border-bottom: none;
+}
+
+.recent_destination_meta h3,
+.recent_destination_stats span {
+    margin: 0;
+}
+
+.recent_destination_meta h3 {
+    font-size: 16px;
+    color: #333333;
+}
+
+.recent_destination_meta p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #666666;
+}
+
+.recent_destination_stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 12px;
+    color: #7FAC9C;
+    text-align: right;
+}
+
 .empty_state {
     display: flex;
     align-items: center;
@@ -246,6 +284,15 @@
 
     .section_title {
         font-size: 16px;
+    }
+
+    .recent_destination_item {
+        flex-direction: column;
+    }
+
+    .recent_destination_stats {
+        align-items: flex-start;
+        text-align: left;
     }
 }
 

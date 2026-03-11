@@ -52,6 +52,11 @@
     background-color: #5a9080;
 }
 
+.publish_btn:disabled {
+    background-color: #9abdb1;
+    cursor: not-allowed;
+}
+
 .add_dest_content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -170,6 +175,17 @@
     text-decoration: underline;
 }
 
+.form_error_message,
+.sidebar_note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #666666;
+}
+
+.form_error_message {
+    color: #d9534f;
+}
+
 /* ---- SIDEBAR SECTION ---- */
 .sidebar_section {
     display: flex;
@@ -269,6 +285,43 @@
 
 .commute_route_btn:hover {
     background-color: #5a9080;
+}
+
+.route_list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.route_list_item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.route_list_item strong {
+    color: #333333;
+}
+
+.route_list_item p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #666666;
+}
+
+.route_remove_btn {
+    border: none;
+    background: none;
+    color: #d9534f;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 /* ---- RESPONSIVE DESIGN ---- */

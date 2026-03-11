@@ -13,8 +13,35 @@ import Contact from './Contact/contact';
 import AdminLogin from './Admin/adminLogin';
 import AdminDashboard from './Admin/adminDashboard';
 
+const ADMIN_STORAGE_KEY = 'geo-map-admin-user';
+
+function getStoredAdminUser() {
+    const storedValue = localStorage.getItem(ADMIN_STORAGE_KEY);
+
+    if (!storedValue) {
+        return null;
+    }
+
+    try {
+        return JSON.parse(storedValue);
+    } catch {
+        localStorage.removeItem(ADMIN_STORAGE_KEY);
+        return null;
+    }
+}
+
 export default function App() {
-    const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+    const [adminUser, setAdminUser] = useState(() => getStoredAdminUser());
+
+    const handleLoginSuccess = (user) => {
+        localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(user));
+        setAdminUser(user);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem(ADMIN_STORAGE_KEY);
+        setAdminUser(null);
+    };
 
     return (
         <div className="App">
@@ -40,15 +67,15 @@ export default function App() {
 
                 {/* Admin Login */}
                 <Route path="/admin" element={
-                    isAdminLoggedIn
+                    adminUser
                         ? <Navigate to="/admin/dashboard" />
-                        : <AdminLogin onLoginSuccess={() => setIsAdminLoggedIn(true)} />
+                        : <AdminLogin onLoginSuccess={handleLoginSuccess} />
                 } />
 
                 {/* Admin Dashboard - protected */}
                 <Route path="/admin/dashboard" element={
-                    isAdminLoggedIn
-                        ? <AdminDashboard onLogout={() => setIsAdminLoggedIn(false)} />
+                    adminUser
+                        ? <AdminDashboard adminUser={adminUser} onLogout={handleLogout} />
                         : <Navigate to="/admin" />
                 } />
             </Routes>
