@@ -1,5 +1,4 @@
 <?php
-// api/activities.php
 // Handles fetching all preset activity categories
 
 require_once "../config/cors.php";
