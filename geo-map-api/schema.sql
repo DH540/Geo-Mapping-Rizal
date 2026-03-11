@@ -3,9 +3,6 @@
 -- Database: geo_map_rizal
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS geo_map_rizal;
-USE geo_map_rizal;
-
 CREATE TABLE IF NOT EXISTS user (
     user_id       INT             NOT NULL AUTO_INCREMENT,
     email         VARCHAR(255)    NOT NULL UNIQUE,
