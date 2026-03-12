@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { API_BASE_URL } from "../../services/api";
+import { API_BASE_URL } from "../services/api";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
