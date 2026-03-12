@@ -4,7 +4,7 @@
 $allowed_origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://geo-map-rizal.vercel.app"
+    "https://geo-mapping-rizal-2j2h3j1xm-dh540s-projects.vercel.app/"
 ];
 
 $request_origin = $_SERVER["HTTP_ORIGIN"] ?? "";
