@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { API_BASE_URL } from "../../services/api";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -69,24 +70,47 @@ const Route = () => {
         setDistance(null);
         setLoading(true);
 
-        // Step 1 - Geocode destination using Nominatim (free)
         try {
+            let destLat = null;
+            let destLng = null;
+
+            // Step 1 - Try Nominatim first
             const geoRes = await fetch(
                 `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(destination)}&format=json&limit=1`
             );
             const geoData = await geoRes.json();
 
-            if (!geoData || geoData.length === 0) {
-                setError("Destination not found. Try a more specific location.");
-                setLoading(false);
-                return;
+            if (geoData && geoData.length > 0) {
+                destLat = parseFloat(geoData[0].lat);
+                destLng = parseFloat(geoData[0].lon);
+            } else {
+                // Step 2 - Fallback to our database
+                const dbRes = await fetch(`${API_BASE_URL}/destinations.php`);
+                const dbData = await dbRes.json();
+
+                if (dbData.status === "success" && dbData.data.length > 0) {
+                    const match = dbData.data.find((d) =>
+                        d.name.toLowerCase().includes(destination.toLowerCase())
+                    );
+
+                    if (match) {
+                        destLat = match.latitude;
+                        destLng = match.longitude;
+                    } else {
+                        setError("Destination not found. Try a more specific location.");
+                        setLoading(false);
+                        return;
+                    }
+                } else {
+                    setError("Destination not found. Try a more specific location.");
+                    setLoading(false);
+                    return;
+                }
             }
 
-            const destLat = parseFloat(geoData[0].lat);
-            const destLng = parseFloat(geoData[0].lon);
             setDestCoords({ lat: destLat, lng: destLng });
 
-            // Step 2 - Get user location
+            // Step 3 - Get user location
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
                     const origin = {
@@ -95,7 +119,7 @@ const Route = () => {
                     };
                     setOriginCoords(origin);
 
-                    // Step 3 - Get route from OSRM
+                    // Step 4 - Get route from OSRM
                     const routeRes = await fetch(
                         `https://router.project-osrm.org/route/v1/driving/${origin.lng},${origin.lat};${destLng},${destLat}?overview=full&geometries=geojson&steps=true`
                     );
@@ -105,13 +129,11 @@ const Route = () => {
                         const route = routeData.routes[0];
                         const leg = route.legs[0];
 
-                        // Duration and distance
                         const mins = Math.round(route.duration / 60);
                         const km = (route.distance / 1000).toFixed(1);
                         setDuration(mins);
                         setDistance(km);
 
-                        // Steps
                         const extractedSteps = leg.steps.map((step) => ({
                             instruction: step.maneuver.instruction || cleanInstruction(step),
                             distance: (step.distance / 1000).toFixed(2) + " km",
