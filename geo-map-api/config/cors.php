@@ -11,17 +11,18 @@ $request_origin = $_SERVER["HTTP_ORIGIN"] ?? "";
 
 if ($request_origin !== "" && in_array($request_origin, $allowed_origins, true)) {
     header("Access-Control-Allow-Origin: " . $request_origin);
-} elseif ($request_origin === "") {
-    header("Access-Control-Allow-Origin: *");
+} else {
+
+    header("Access-Control-Allow-Origin: https://geo-map-rizal.vercel.app");
 }
 
 header("Vary: Origin");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Max-Age: 86400");
 header("Content-Type: application/json; charset=UTF-8");
 
-if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
-    header("Access-Control-Max-Age: 86400");
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {  
     http_response_code(204);
     exit();
 }
