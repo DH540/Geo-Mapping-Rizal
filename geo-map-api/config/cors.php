@@ -1,19 +1,14 @@
 <?php
-// Handles CORS headers so React can communicate with the API
-
-$allowed_origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://geo-map-rizal.vercel.app",
-    "https://geo-mapping-rizal-2j2h3j1xm-dh540s-projects.vercel.app/"
-];
-
 $request_origin = $_SERVER["HTTP_ORIGIN"] ?? "";
 
-if ($request_origin !== "" && in_array($request_origin, $allowed_origins, true)) {
+// Allow any vercel.app subdomain or localhost
+if (
+    preg_match('/^https:\/\/[\w-]+\.vercel\.app$/', $request_origin) ||
+    $request_origin === "http://localhost:5173" ||
+    $request_origin === "http://127.0.0.1:5173"
+) {
     header("Access-Control-Allow-Origin: " . $request_origin);
 } else {
-
     header("Access-Control-Allow-Origin: https://geo-map-rizal.vercel.app");
 }
 
@@ -24,7 +19,7 @@ header("Access-Control-Max-Age: 86400");
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Content-Type: application/json; charset=UTF-8");
 
-if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {  
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
     http_response_code(204);
     exit();
 }
