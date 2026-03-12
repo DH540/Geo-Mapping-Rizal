@@ -1,25 +1,21 @@
 <?php
 class Database {
-    private $host;
-    private $port;
-    private $db_name;
-    private $username;
-    private $password;
-    private $conn = null;
+    private $host     = "mysql.railway.internal";
+    private $db_name  = "railway";
+    private $username = "root";
+    private $password = "tEqCqclfvJSDLPjByxkRHKowhQTqTgFZ";
+    private $conn     = null;
 
-    public function __construct() {
-        $this->host     = getenv('MYSQLHOST')     ?: 'localhost';
-        $this->port     = getenv('MYSQLPORT')     ?: '3306';
-        $this->db_name  = getenv('MYSQLDATABASE') ?: 'railway';
-        $this->username = getenv('MYSQLUSER')     ?: 'root';
-        $this->password = getenv('MYSQLPASSWORD') ?: '';
-    }
-
+    // Returns the database connection
     public function getConnection() {
         try {
-            $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->db_name};charset=utf8";
-            $this->conn = new PDO($dsn, $this->username, $this->password);
+            $this->conn = new PDO(
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                $this->username,
+                $this->password
+            );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn->exec("set names utf8");
         } catch (PDOException $e) {
             echo json_encode([
                 "status"  => "error",
@@ -27,6 +23,7 @@ class Database {
             ]);
             die();
         }
+
         return $this->conn;
     }
 }
