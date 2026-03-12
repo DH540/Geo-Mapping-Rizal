@@ -1,21 +1,25 @@
 <?php
 class Database {
-    private $host     = "sql210.infinityfree.com";
-    private $db_name  = "if0_41362257_rizal_database";
-    private $username = "if0_41362257";
-    private $password = "MyWebSys2026";
-    private $conn     = null;
+    private $host;
+    private $port;
+    private $db_name;
+    private $username;
+    private $password;
+    private $conn = null;
 
-    // Returns the database connection
+    public function __construct() {
+        $this->host     = getenv('MYSQLHOST')     ?: 'localhost';
+        $this->port     = getenv('MYSQLPORT')     ?: '3306';
+        $this->db_name  = getenv('MYSQLDATABASE') ?: 'railway';
+        $this->username = getenv('MYSQLUSER')     ?: 'root';
+        $this->password = getenv('MYSQLPASSWORD') ?: '';
+    }
+
     public function getConnection() {
         try {
-            $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
-                $this->username,
-                $this->password
-            );
+            $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->db_name};charset=utf8";
+            $this->conn = new PDO($dsn, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->exec("set names utf8");
         } catch (PDOException $e) {
             echo json_encode([
                 "status"  => "error",
@@ -23,7 +27,6 @@ class Database {
             ]);
             die();
         }
-
         return $this->conn;
     }
 }
