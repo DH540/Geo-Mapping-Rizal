@@ -2,7 +2,7 @@
 
 .hero {
     width: 100%;
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,47 +51,4 @@
     color: #ffffff;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
     letter-spacing: 2px;
-}
-
-/* ---- SEARCH FORM ---- */
-.search_form {
-    display: flex;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 50px;
-    padding: 6px 6px 6px 20px;
-    width: 500px;
-    max-width: 90vw;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.search_input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 15px;
-    color: #333333;
-    padding: 8px 0;
-}
-
-.search_input::placeholder {
-    color: #999999;
-}
-
-.search_btn {
-    background-color: #7FAC9C;
-    color: #ffffff;
-    border: none;
-    border-radius: 50px;
-    padding: 10px 24px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    white-space: nowrap;
-}
-
-.search_btn:hover {
-    background-color: #5a9080;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./footer.css";
 
 const Footer = () => {
@@ -15,9 +16,9 @@ const Footer = () => {
             <div className="footer_business">
                 <span className="footer_business_text">Business Registration</span>
                 <div className="footer_business_links">
-                    <a href="https://youtu.be/2q6G8pIU9PQ">Requirements</a>
-                    <a href="https://youtu.be/2q6G8pIU9PQ">Submission</a>
-                    <a href="https://youtu.be/2q6G8pIU9PQ">Contact Us</a>
+                    <a href="https://emerhub.com/glossaries/dot-accreditation/">Requirements</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJF3QQGGCplZSybrgaZRtxRxOeu3JKyr_IagEsDaDTEKgGWA/viewform?usp=send_form">Submission</a>
+                    <Link to="/contact">Contact Us</Link>
                 </div>
             </div>
 

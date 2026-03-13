@@ -86,38 +86,3 @@
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
-
-/* ---- MORE BUTTON ---- */
-.more_btn {
-    margin-top: 10px;
-    padding: 10px 32px;
-    background-color: #dadddc;
-    color: #0b0000;
-    border: none;
-    border-radius: 50px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.more_btn:hover {
-    background-color: #5a9080;
-    transform: scale(1.05);
-}
-
-/* ---- EXTRA CARDS DROPDOWN ---- */
-.card_grid_more {
-    animation: fadeDown 0.3s ease;
-}
-
-@keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}

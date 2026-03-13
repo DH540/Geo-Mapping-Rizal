@@ -18,13 +18,8 @@ const Offers = () => {
                     </div>
                     <div className="card" style={{ backgroundImage: "url('/climbing_img.png')" }}>
                         <span>Mountain Climbing</span>
-                    </div>   
-                </div>
-
-                
-                {showMore && (
-                    <div className="card_grid card_grid_more">
-                        <div className="card" style={{ backgroundImage: "url('/swimming_img.png')" }}>
+                    </div>
+                    <div className="card" style={{ backgroundImage: "url('/swimming_img.png')" }}>
                             <span>Swimming</span>
                         </div>
                         <div className="card" style={{ backgroundImage: "url('/biking_img.png')" }}>
@@ -32,13 +27,8 @@ const Offers = () => {
                         </div>
                         <div className="card" style={{ backgroundImage: "url('/trekking_img.png')" }}>
                             <span>Trekking</span>
-                        </div>
-                    </div>
-                )}
-
-                <button className="more_btn" onClick={() => setShowMore(!showMore)}>
-                    {showMore ? "Show Less ▲" : "More ▼"}
-                </button>
+                        </div>   
+                </div>
             </div>
         </div>
     );
